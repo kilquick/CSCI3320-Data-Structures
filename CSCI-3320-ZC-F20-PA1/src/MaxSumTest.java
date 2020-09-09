@@ -1,20 +1,20 @@
-/**
- * Author >>        Tyler Zoucha >> tzoucha@unomaha.edu
- * Program Title >> Maximum Contiguous Subsequence Sum
- * Class >>         CSCI3320-820, Fall 2020
- * Assignment >>    CSCI-3320-ZC-F20-PA1
- *
- * Objective >>  This program used modified algorithms from the textbook; it will take an input size (N)
- *                  from the user to generate a random sequence of N integers ranging from -9999 to 9999.
- *                  If N is less than 50, the program prints out the randomly generated numbers. Then it
- *                  finds the maximum subsequence and the starting and the ending of the subsequence.
- **/
+/*
+  Author >>        Tyler Zoucha >> tzoucha@unomaha.edu
+  Program Title >> Maximum Contiguous Subsequence Sum
+  Class >>         CSCI3320-820, Fall 2020
+  Assignment >>    CSCI-3320-ZC-F20-PA1
+
+  Objective >>  This program used modified algorithms from the textbook; it will take an input size (N)
+                   from the user to generate a random sequence of N integers ranging from -9999 to 9999.
+                   If N is less than 50, the program prints out the randomly generated numbers. Then it
+                   finds the maximum subsequence and the starting and the ending of the subsequence.
+ */
 
 import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Initilize MaxSumTest Object
+ * Initialize MaxSumTest Object
  * @author Tyler Zoucha >> tzoucha@unomaha.edu
  */
 public final class MaxSumTest {
@@ -50,8 +50,8 @@ public final class MaxSumTest {
         for( int alg = 2; alg <= 4; alg++ )                                 // Algorithm iteration
         {
             switch (alg) {                                                  // Process each algorithm separately
-                /**
-                 * Algorithm 2
+                /*
+                  Algorithm 2
                  */
                 case 2 -> {
                     long startTime2 = System.nanoTime();                    // Begin timestamp
@@ -65,8 +65,8 @@ public final class MaxSumTest {
                     System.out.printf("Execution Time: %.0f milliseconds", Time2);
                     System.out.println();
                 }
-                /**
-                 * Algorithm 3
+                /*
+                  Algorithm 3
                  */
                 case 3 -> {
                     long startTime3 = System.nanoTime();                    // Begin timestamp
@@ -80,8 +80,8 @@ public final class MaxSumTest {
                     System.out.printf("Execution Time: %.0f milliseconds", Time3);
                     System.out.println();
                 }
-                /**
-                 * Algorithm 4
+                /*
+                  Algorithm 4
                  */
                 case 4 -> {
                     long startTime4 = System.nanoTime();                    // Begin timestamp
