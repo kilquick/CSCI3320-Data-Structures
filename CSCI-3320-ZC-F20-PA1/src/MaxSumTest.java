@@ -1,3 +1,13 @@
+/**
+ * Author >>        Tyler Zoucha
+ * Program Title >> Maximum Contiguous Subsequence Sum
+ * Class >>         CSCI3320-820, Fall 2020
+ * Assignment >>    CSCI-3320-ZC-F20-PA1
+ *
+ * Objective >>
+ *
+ **/
+
 import java.util.Random;
 import java.util.Scanner;
 
