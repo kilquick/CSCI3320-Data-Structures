@@ -4,8 +4,10 @@
  * Class >>         CSCI3320-820, Fall 2020
  * Assignment >>    CSCI-3320-ZC-F20-PA1
  *
- * Objective >>
- *
+ * Objective >>  This program used modified algorithms from the text book; it will take an input size (N)
+ *                  from the user to generate a random sequence of N integers ranging from -9999 to 9999.
+ *                  If N is less than 50, the program prints out the randomly generated numbers. Then it
+ *                  finds the maximum subsequence and the starting and the ending of the subsequence.
  **/
 
 import java.util.Random;
