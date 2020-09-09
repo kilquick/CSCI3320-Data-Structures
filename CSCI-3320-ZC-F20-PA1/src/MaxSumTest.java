@@ -138,7 +138,7 @@ public final class MaxSumTest {
         return scanner.nextInt();
     }
 
-    private static int[] generateIntegerArray(final int numberFromUser) {
+    private static int[] generateIntegerArray(int numberFromUser) {
         int[] randomIntArray = new int[numberFromUser];
         Random random = new Random();
         for (int i= 0; i < numberFromUser; i++) {
@@ -149,7 +149,7 @@ public final class MaxSumTest {
         return randomIntArray;
     }
 
-    private static void printArray(final int[] randomIntArray) {
+    private static void printArray(int[] randomIntArray) {
         StringBuilder builtString = new StringBuilder();
 
         if (randomIntArray.length != 0) {
