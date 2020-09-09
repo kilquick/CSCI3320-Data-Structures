@@ -11,7 +11,7 @@
 />>     (Algorithm 2, 3 & 4) in milliseconds (ms) or nanoseconds (ns). [Note: 1 second = 103 ms = 109 ns.]
 /
 ////////////////////////////////////////////////////////////////////////
-//  Below is how to compile and run the program with a sample output  //
+/!* Below is how to compile and run the program with a sample output *!/
 ////////////////////////////////////////////////////////////////////////
 
 
