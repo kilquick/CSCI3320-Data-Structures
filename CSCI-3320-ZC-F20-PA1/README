@@ -1,0 +1,28 @@
+#Assignement PA1
+
+/>/Assignment PA1 requires modifying Algorithm 2, 3 & 4 from the text book so that they return in the value
+/>>/of the maximum subsequence and the starting and ending indices of the maximum subsequence.
+
+/>/The algorithm should take input size (N) from the user and generate a random sequence of N integers
+/>>/ranging from -9999 to 9999. If N is less than 50, your program must print the randomly generated numbers,
+/>>/and find the maximum subsequence. The program should measure (print) the execution time of these algorithms
+/>>/(Algorithm 2, 3 & 4) in milliseconds (ms) or nanoseconds (ns). [Note: 1 second = 103 ms = 109 ns.]
+
+/>/Below is an example output\>>/
+
+Please enter the size of the problem (N): 15
+846 -9483 -5431 4790 -5876 3574 122 -848 -7319 5448 8443 -3016 -4798 -7292 -7128
+
+Algorithm 2:
+MaxSum: 13891, S_index: 9, E_index: 10
+Execution Time: 4 milliseconds
+
+Algorithm 3:
+MaxSum: 13891, S_index: 9, E_index: 10
+Execution Time: 30 milliseconds
+
+Algorithm 4:
+MaxSum: 13891, S_index: 9, E_index: 10
+Execution Time: 2 milliseconds
+
+Process finished with exit code 0
