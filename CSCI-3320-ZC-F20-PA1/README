@@ -8,8 +8,11 @@
 />> and find the maximum subsequence. The program should measure (print) the execution time of these algorithms
 />> (Algorithm 2, 3 & 4) in milliseconds (ms) or nanoseconds (ns). [Note: 1 second = 103 ms = 109 ns.]
 
-//  Below is a sample output  //
+//  Below is how to compile and run the program with sample output  //
 
+
+$ javac *./src/MaxSumTest.java
+$ java *./src./MaxSumTest.java
 Please enter the size of the problem (N): 15
 846 -9483 -5431 4790 -5876 3574 122 -848 -7319 5448 8443 -3016 -4798 -7292 -7128
 
