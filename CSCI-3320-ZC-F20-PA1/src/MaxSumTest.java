@@ -26,7 +26,7 @@ public final class MaxSumTest {
 
     /**
      * Main method to drive program.
-     * @param args The first operand --> Accepts String array
+     * @param args String array
      */
     public static void main(String[] args) {
         int numberFromUser = getNumberFromUser();                           // Asks user for (N) array
