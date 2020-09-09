@@ -1,5 +1,5 @@
 /**
- * Author >>        Tyler Zoucha
+ * Author >>        Tyler Zoucha >> tzoucha@unomaha.edu
  * Program Title >> Maximum Contiguous Subsequence Sum
  * Class >>         CSCI3320-820, Fall 2020
  * Assignment >>    CSCI-3320-ZC-F20-PA1
@@ -13,60 +13,85 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Initilize MaxSumTest Object
+ * @author Tyler Zoucha >> tzoucha@unomaha.edu
+ */
 public final class MaxSumTest {
-    private static final int MAX_RANDOM_UPPER_BOUND = 9999;
+    private static final int MAX_RANDOM_UPPER_BOUND = 9999;                 // Set sequence bounds && init vars
     private static final int MIN_RANDOM_LOWER_BOUND = -9999;
     private static final int MAX_SIZE_TO_PRINT_ARRAY = 50;
     private static int seqStart = 0;
     private static int seqEnd = -1;
 
+    /**
+     * Main method to drive program.
+     * @param args The first operand --> Accepts String array
+     */
     public static void main(String[] args) {
-        int numberFromUser = getNumberFromUser();
-        int[] randomIntArray = generateIntegerArray(numberFromUser);
+        int numberFromUser = getNumberFromUser();                           // Asks user for (N) array
+        int[] randomIntArray = generateIntegerArray(numberFromUser);        // Randomly generates (N) array
 
-        if (numberFromUser < MAX_SIZE_TO_PRINT_ARRAY) {
+        if (numberFromUser < MAX_SIZE_TO_PRINT_ARRAY) {                     // Prints array if N < 50
             printArray(randomIntArray);
         }
-        getResults(randomIntArray);
+        getResults(randomIntArray);                                         // Processes algorithms for (N) array
     }
 
+    /**
+     * Method Name >>           getResults
+     * @param randomIntArray    Passes the randomly generated integer array
+     * Return Value >>          <n/a>
+     * Description >>           Processes the integer array through the subsequence sum algorithms one by one.
+     *                          Then prints each algorithm's result of Sum, Sequence Start, Sequence End,
+     *                          and each algorithm's execution time.
+     */
     private static void getResults(int[] randomIntArray) {
-        for( int alg = 2; alg <= 4; alg++ )
+        for( int alg = 2; alg <= 4; alg++ )                                 // Algorithm iteration
         {
-            switch (alg) {
+            switch (alg) {                                                  // Process each algorithm separately
+                /**
+                 * Algorithm 2
+                 */
                 case 2 -> {
                     long startTime2 = System.nanoTime();
                     maxSubSum2(randomIntArray);
                     long endTime2 = System.nanoTime();
-                    double Time2 = (endTime2 - startTime2) / 1000;
+                    double Time2 = (endTime2 - startTime2) / 1000;          // Execution time of Algorithm 2
                     System.out.println();
                     System.out.println("Algorithm 2:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n",
-                            maxSubSum2(randomIntArray), seqStart, seqEnd);
+                            maxSubSum2(randomIntArray), seqStart, seqEnd);  // Alg2 Sum, Sequence Start, Sequence End
                     System.out.printf("Execution Time: %.0f milliseconds", Time2);
                     System.out.println();
                 }
+                /**
+                 * Algorithm 3
+                 */
                 case 3 -> {
                     long startTime3 = System.nanoTime();
                     maxSubSum3(randomIntArray);
                     long endTime3 = System.nanoTime();
-                    double Time3 = (endTime3 - startTime3) / 1000;
+                    double Time3 = (endTime3 - startTime3) / 1000;          // Execution time of Algorithm 3
                     System.out.println();
                     System.out.println("Algorithm 3:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n", maxSubSum3(randomIntArray),
-                            seqStart, seqEnd);
+                            seqStart, seqEnd);                              // Alg3 Sum, Sequence Start, Sequence End
                     System.out.printf("Execution Time: %.0f milliseconds", Time3);
                     System.out.println();
                 }
+                /**
+                 * Algorithm 4
+                 */
                 case 4 -> {
                     long startTime4 = System.nanoTime();
                     maxSubSum4(randomIntArray);
                     long endTime4 = System.nanoTime();
-                    double Time4 = (endTime4 - startTime4) / 1000;
+                    double Time4 = (endTime4 - startTime4) / 1000;          // Execution time of Algorithm 4
                     System.out.println();
                     System.out.println("Algorithm 4:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n",
-                            maxSubSum4(randomIntArray), seqStart, seqEnd);
+                            maxSubSum4(randomIntArray), seqStart, seqEnd);  // Alg4 Sum, Sequence Start, Sequence End
                     System.out.printf("Execution Time: %.0f milliseconds", Time4);
                     System.out.println();
                 }
