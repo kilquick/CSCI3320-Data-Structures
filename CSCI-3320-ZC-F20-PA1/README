@@ -6,9 +6,9 @@
 />>     the maximum subsequence and the starting and ending indices of the maximum subsequence.
 /
 />  The algorithm should take input size (N) from the user and generate a random sequence of N integers ranging
-/>>     from -9999 to 9999. If N is less than 50, your program must print the randomly generated numbers, and
+/>>     from -9999 to 9999. If N is less than 50 the program must print the randomly generated numbers, and
 />>     find the maximum subsequence. The program should measure (print) the execution time of these algorithms
-/>>     (Algorithm 2, 3 & 4) in milliseconds (ms) or nanoseconds (ns). [Note: 1 second = 103 ms = 109 ns.]
+/>>     (Algorithm 2, 3 & 4) in milliseconds (ms) or nanoseconds (ns). [Note: 1 second = 10^3 ms = 10^9 ns.]
 /
 ////////////////////////////////////////////////////////////////////////
 /!* Below is how to compile and run the program with a sample output *!/
