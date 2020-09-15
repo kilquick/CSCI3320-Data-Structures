@@ -56,13 +56,13 @@ public final class MaxSumTest {
                  */
                 case 2:
                     long startTime2 = System.nanoTime();                    // Begin timestamp
-                    maxSubSum2(randomIntArray);                             // Execute Algorithm 2
+                    int sum2 = maxSubSum2(randomIntArray);                  // Execute Algorithm 2
                     long endTime2 = System.nanoTime();                      // End timestamp
                     double Time2 = (endTime2 - startTime2) / 1000;          // Execution time for Algorithm 2
                     System.out.println();
                     System.out.println("Algorithm 2:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n",
-                            maxSubSum2(randomIntArray), seqStart, seqEnd);  // Sum, Sequence Start, Sequence End
+                            sum2, seqStart, seqEnd);                        // Sum, Sequence Start, Sequence End
                     System.out.printf("Execution Time: %.0f milliseconds", Time2);
                     System.out.println();
                     break;
@@ -71,12 +71,12 @@ public final class MaxSumTest {
                  */
                 case 3:
                     long startTime3 = System.nanoTime();                    // Begin timestamp
-                    maxSubSum3(randomIntArray);                             // Execute Algorithm 3
+                    int sum3 = maxSubSum3(randomIntArray);                  // Execute Algorithm 3
                     long endTime3 = System.nanoTime();                      // End timestamp
                     double Time3 = (endTime3 - startTime3) / 1000;          // Execution time for Algorithm 3
                     System.out.println();
                     System.out.println("Algorithm 3:");
-                    System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n", maxSubSum3(randomIntArray),
+                    System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n", sum3,
                             seqStart, seqEnd);                              // Sum, Sequence Start, Sequence End
                     System.out.printf("Execution Time: %.0f milliseconds", Time3);
                     System.out.println();
@@ -86,13 +86,13 @@ public final class MaxSumTest {
                  */
                 case 4:
                     long startTime4 = System.nanoTime();                    // Begin timestamp
-                    maxSubSum4(randomIntArray);                             // Execute Algorithm 4
+                    int sum4 = maxSubSum4(randomIntArray);                  // Execute Algorithm 4
                     long endTime4 = System.nanoTime();                      // End timestamp
                     double Time4 = (endTime4 - startTime4) / 1000;          // Execution time for Algorithm 4
                     System.out.println();
                     System.out.println("Algorithm 4:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n",
-                            maxSubSum4(randomIntArray), seqStart, seqEnd);  // Sum, Sequence Start, Sequence End
+                            sum4, seqStart, seqEnd);  // Sum, Sequence Start, Sequence End
                     System.out.printf("Execution Time: %.0f milliseconds", Time4);
                     System.out.println();
                     break;
