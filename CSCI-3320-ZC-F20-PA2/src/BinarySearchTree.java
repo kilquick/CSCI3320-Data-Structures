@@ -1,35 +1,40 @@
+/*
+  Author >>        Tyler Zoucha >> tzoucha@unomaha.edu
+  Program Title >> Binary Search Tree (BST)
+  Class >>         CSCI3320-820, Fall 2020
+  Assignment >>    CSCI-3320-ZC-F20-PA2
+
+  Objective >>  Main interface for the BinarySearchTree to CompareTo itself
+ */
+
 /**
- * Implements an unbalanced binary search tree.
- * Note that all "matching" is based on the compareTo method.
- *
- * @author Tyler Zoucha
+ * Init class to interface BinarySearchTree
+ * @author Tyler Zoucha >> tzoucha@unomaha.edu
  */
 public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
-    /**
-     * The tree root.
-     */
+    // Initialize BinaryNode object
     private BinaryNode<AnyType> root;
 
-    /**
-     * Construct the tree.
-     */
+    // Constructor to init null BinarySearchTree
     public BinarySearchTree() {
         root = null;
     }
 
     /**
-     * Insert into the tree; duplicates are ignored.
-     *
-     * @param x the item to insert.
+     * Method Name >>       insert
+     * Description >>       Inserts value into the Binary Tree
+     * @param   x AnyType   Datatype that can implement Comparable<? super AnyType>
+     * No return value      <n/a></n/a>
      */
     public void insert(AnyType x) {
         root = insert(x, root);
     }
 
     /**
-     * Remove from the tree. Nothing is done if x is not found.
-     *
-     * @param x the item to remove.
+     * Method Name >>       remove
+     * Description >>       Removes value from the Binary Tree
+     * @param   x AnyType   Datatype that can implement Comparable<? super AnyType>
+     * No return value      <n/a></n/a>
      */
     public void remove(AnyType x) {
         root = remove(x, root);
@@ -37,65 +42,68 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 
 
     /**
-     * Test if the tree is logically empty.
-     *
-     * @return true if empty, false otherwise.
+     * Method Name >>       isEmpty
+     * Description >>       Tests if the Binary Tree is empty
+     * No input parameters  <n/a></n/a>
+     * @return  boolean     True if BST is null, otherwise false
      */
     public boolean isEmpty() {
         return root == null;
     }
 
     /**
-     * Print the tree contents in sorted order.
+     * Method Name >>       printTree
+     * Description >>       Prints Binary Tree if not empty, else state empty
+     * No input parameters  <n/a></n/a>
+     * No return value      <n/a></n/a>
      */
     public void printTree() {
         if (isEmpty())
-            System.out.println("Binary Tree is currently empty.");
+            System.out.println("The Binary Tree is currently empty.");
         else {
             printTree(root);
         }
     }
 
     /**
-     * Internal method to insert into a subtree.
-     *
-     * @param x the item to insert.
-     * @param t the node that roots the subtree.
-     * @return the new root of the subtree.
+     * Method Name >>       insert
+     * Description >>       Insert node into tree
+     * @param  x   AnyType  item to insert into subtree
+     * @param  t BinaryNode subtree root node
+     * @return  BinaryNode  subtree new root node
      */
     private BinaryNode<AnyType> insert(AnyType x, BinaryNode<AnyType> t) {
         if (t == null)
             return new BinaryNode<>(x, null, null);
 
-        int compareResult = x.compareTo(t.element);
+        int compareResult = x.compareTo(t.element);         // compare values
 
         if (compareResult < 0)
             t.left = insert(x, t.left);
         else if (compareResult > 0)
             t.right = insert(x, t.right);
-        else
-            ;  // Duplicate; do nothing
+        else;   // Do nothing
         return t;
     }
 
     /**
-     * Internal method to remove from a subtree.
-     *
-     * @param x the item to remove.
-     * @param t the node that roots the subtree.
-     * @return the new root of the subtree.
+     * Method Name >>       remove
+     * Description >>       Remove node from subtree
+     * @param  x   AnyType  item to remove from subtree
+     * @param  t BinaryNode subtree root node
+     * @return  BinaryNode  subtree new root node
      */
     private BinaryNode<AnyType> remove(AnyType x, BinaryNode<AnyType> t) {
         if (t == null)
             return null;   // Item not found; do nothing
 
-        int compareResult = x.compareTo(t.element);
+        int compareResult = x.compareTo(t.element);         // compare values
 
         if (compareResult < 0)
             t.left = remove(x, t.left);
         else if (compareResult > 0)
             t.right = remove(x, t.right);
-        else if (t.left != null && t.right != null) // Two children
+        else if (t.left != null && t.right != null)         // Two children
         {
             t.element = findMin(t.right).element;
             t.right = remove(t.element, t.right);
@@ -105,10 +113,10 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     }
 
     /**
-     * Internal method to find the smallest item in a subtree.
-     *
-     * @param t the node that roots the subtree.
-     * @return node containing the smallest item.
+     * Method Name >>       findMin
+     * Description >>       Finds minimum value of tree
+     * @param  t BinaryNode Subtree root
+     * @return  BinaryNode  Node with minimum value
      */
     private BinaryNode<AnyType> findMin(BinaryNode<AnyType> t) {
         if (t == null)
@@ -120,11 +128,12 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
 
     /**
      * Internal method to print a subtree in sorted order.
-     *
-     * @param t the node that roots the subtree.
+     * Method Name >>       printTree
+     * Description >>       Print a subtree in sorted order.
+     * @param  t BinaryNode Subtree root
+     * Return values >>     <n/a></n/a>
      */
     private void printTree(BinaryNode<AnyType> t) {
-
         if (t != null) {
             printTree(t.left);
             System.out.println(t.element);
@@ -133,9 +142,10 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     }
 
     /**
-     * Returns the number of leaves in the binary tree.
-     * @param t The node to check, usually if a recursive call, otherwise the root node.
-     * @return The number of leaves in the supplied binary tree.
+     * Method Name >>       numLeaves
+     * Description >>       Returns the number of leaves in the binary tree.
+     * @param  t BinaryNode The node to check
+     * @return   int        The number of leaves in the binary tree.
      */
     public int numLeaves(BinaryNode<AnyType> t) {
         if (t != null) {
@@ -149,9 +159,10 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     }
 
     /**
-     * Returns the number of nodes in the tree with only one child.
-     * @param t The Node to check (when recursive, otherwise the root node).
-     * @return The number of nodes in the tree with only one child.
+     * Method Name >>       numOneChildNodes
+     * Description >>       Returns the number of nodes in the tree with only one child.
+     * @param t BinaryNode  The Node to check
+     * @return int          The number of nodes in the tree with only one child.
      */
     public int numOneChildNodes(BinaryNode<AnyType> t) {
         if (t==null) {
@@ -164,15 +175,23 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
         return numOneChildNodes(t.left) + numOneChildNodes(t.right) + num;
     }
 
+    /**
+     * Method Name >>           onlyOneNull
+     * Description >>           Checks if one of two nodes is null
+     * @param node1 BinaryNode  Node1 to check/compare
+     * @param node2 BinaryNode  Node2 to check/compare
+     * @return  boolean         True if only one node is null, else false
+     */
     private boolean onlyOneNull(BinaryNode<AnyType> node1, BinaryNode<AnyType> node2) {
         return (node1 != null && node2 == null)
                 || (node1 == null && node2 != null);
     }
 
     /**
-     * Returns the number of two children nodes in a binary tree.
-     * @param t The root node
-     * @return the number of full nodes in the tree
+     * Method Name >>       numTwoChildrenNodes
+     * Description >>       Returns the number of nodes that contain only two children.
+     * @param t BinaryNode  Node to check
+     * @return int          number of nodes that contain two children
      */
     public int numTwoChildrenNodes ( BinaryNode<AnyType> t){
         if (t==null)
@@ -184,31 +203,24 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     }
 
     /**
-     * Getter for the root of the binary tree.
-     * @return The root of this tree object..
+     * Method Name >>       getRoot
+     * Description >>       Gets root of tree
+     * No input parameters  <n/a></n/a>
+     * @return BinaryNode   Root node
      */
     public BinaryNode<AnyType> getRoot() {
         return this.root;
     }
 
     /**
-     * Internal method to compute height of a subtree.
-     *
-     * @param t the node that roots the subtree.
-     */
-    private int height(BinaryNode<AnyType> t) {
-        if (t == null)
-            return -1;
-        else
-            return 1 + Math.max(height(t.left), height(t.right));
-    }
-
-    /**
-     * The public level order traversal function. Calls 'printLevel'
+     * Method Name >>       levelOrder
+     * Description >>       Called to print the level order traversal of the tree
+     * No input parameters  <n/a></n/a>
+     * No return values     <n/a></n/a>
      */
     public void levelOrder() {
         System.out.println("\n Level order traversal:\n");
-        int height = this.height(root);
+        int height = getHeight(root);
         for (int i = 0; i < height + 1; i++) {
             printLevel(root, i);
             System.out.println();
@@ -217,9 +229,23 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {
     }
 
     /**
-     * Prints a given level in the binary tree
-     * @param t The current node
-     * @param i the level to print
+     * Method name >>       getHeight
+     * Description >>       Gets tree height
+     * @param t  BinaryTree Root node of tree
+     * @return int          Tree height
+     */
+    private int getHeight(BinaryNode<AnyType> t) {
+        if (t == null)
+            return -1;
+        else
+            return 1 + Math.max(getHeight(t.left), getHeight(t.right));
+    }
+
+    /**
+     * Method name >>       printLevel
+     * Description >>       Prints even level of tree. Used in conjunction with levelOrder()
+     * @param t BinaryNode  The current node to get tree level of
+     * @param i int         Tree level to print
      */
     private void printLevel(BinaryNode<AnyType> t, int i) {
         if (t != null) {
