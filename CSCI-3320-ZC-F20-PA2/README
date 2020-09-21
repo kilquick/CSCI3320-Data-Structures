@@ -1,0 +1,48 @@
+CSCI3320 Programming Assignment 2
+Binary Search Tree (BST)
+Sept. 21, 2020 at 11:59pm on Canvas
+
+BST tree interface
+60 points total
+
+As stated in PA1, your programs must contain enough comments. Programs without comments or with insufficient and/or vague comments will cost you 30%.
+For a full discussion on grading criteria for all programs, review course syllabus and PA1.
+
+For convenience of grading, please follow the following requirement:
+You should have the following three files in the zip folder:   Java file named as PA2BST.java (and its compiled file), and a text or word file containing the result of the test run (see below). Make sure that your name appears WITHIN each file submitted by you. To avoid confusion, do not include any unrelated files in the folder.
+
+User Interface to BST
+You should construct a BST by inserting node values starting with a null tree. You can re-use the code for the insert method given in the sample code from the textbook.
+Your code should have a menu driven user interface at the command line with the following options:
+>> Enter choice [1-8] from menu below:
+1)	Insert node(s) (prompts the user to enter one or more node value and then insert into the BST)
+2)	Print tree (in-order) (You can reuse the code on page 164, Fig. 4.59 of the text)
+3)	Print number of leaves in tree (subpart a)
+4)	Print the number of nodes in T that contain only one child (subpart b)
+5)	Print the number of nodes in T that contain two children (subpart c)
+6)	Print the level order traversal of the tree (subpart d)
+7)	Delete a node
+8)	Exit program
+Your program should not exit until option 8 is selected. Use this tree interface for the following subparts of this question:
+Write methods in Java for each of the following operations. You can put the codes for each subpart in  the same Java program, under different methods.
+•	numLeaves method that returns the number of leaves in T
+•	numOneChildNodes method that returns the number of nodes in T that contain only one child
+•	numTwoChildrenNodes method that returns the number of nodes in T that contain only two children
+•	levelOrder method that prints the level order traversal of the tree. A level order traversal first lists the root, then nodes at depth 1, followed by nodes at depth 2 and so on.
+
+An example of level-order traversal is given below:
+
+ 	Level order traversal:
+
+8
+3 10
+1 6 14
+4 7 13
+You should NOT print your output on a single line, like, 8 2 10 1 6 14 4 7 13
+You should make a single .java file containing all the choices from 1-7 inside the directory. Do NOT make separate .java files for each choice.
+Your submission should satisfy all the requirements as stated in PA1 (including comments, etc.) You should include the result of testing your program using the following data:
+(1)	First insert elements in the order of 9,4,3,7,5,8,11,18,16,17,6, 10. Then test all the options (2 to 6) shown above (except option 7). (input elements should separate by a comma, without space)
+(2)	Then delete 11 and delete 4. Show the result of testing all the options 2 to 6.
+In summary, the fold should include three files: source code (.java), compiled .class file, sample execution as mentioned above.
+
+
