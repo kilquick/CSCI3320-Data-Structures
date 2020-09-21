@@ -69,7 +69,7 @@ public class PA2_Driver {
      * Constructs a new (global) binary search tree.
      */
      public static void makeTreeNodes() {
-         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+         tree = new BinarySearchTree<>();
          String[] inputValues = new String[0];
          Scanner scn = new Scanner(System.in);
          boolean prompt;
