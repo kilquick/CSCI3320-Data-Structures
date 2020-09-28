@@ -63,7 +63,7 @@ public final class MaxSumTest {
                     System.out.println("Algorithm 2:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n",
                             sum2, seqStart, seqEnd);                        // Sum, Sequence Start, Sequence End
-                    System.out.printf("Execution Time: %.0f milliseconds", Time2);
+                    System.out.printf("Execution Time: %.0f microseconds", Time2);
                     System.out.println();
                     break;
                  /*
@@ -78,7 +78,7 @@ public final class MaxSumTest {
                     System.out.println("Algorithm 3:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n", sum3,
                             seqStart, seqEnd);                              // Sum, Sequence Start, Sequence End
-                    System.out.printf("Execution Time: %.0f milliseconds", Time3);
+                    System.out.printf("Execution Time: %.0f microseconds", Time3);
                     System.out.println();
                     break;
                 /*
@@ -93,7 +93,7 @@ public final class MaxSumTest {
                     System.out.println("Algorithm 4:");
                     System.out.printf("MaxSum: %d, S_index: %d, E_index: %d\n",
                             sum4, seqStart, seqEnd);  // Sum, Sequence Start, Sequence End
-                    System.out.printf("Execution Time: %.0f milliseconds", Time4);
+                    System.out.printf("Execution Time: %.0f microseconds", Time4);
                     System.out.println();
                     break;
             }
