@@ -1,0 +1,17 @@
+In this assignment, you have to write a program to construct an AVL tree and insert /remove nodes into/from it. Your program should have a menu driven interface for the AVL tree like the one for BST in Assignment 3. You need to have four options for ‘insert’, ‘remove’, ‘levelOrder’ and ‘exit’ only for the AVL tree. It is required that implementation should be done in Java.
+
+Your submission should satisfy all the requirements as stated in PA1 (including comments, etc.) You should include the result of testing your program using the following data using the following sequence. Include your test result in a separate file, as in PA2.
+(a)	Use option 1 to insert 28,23,22,29,25,24,26 (7 values) as a single input (separate by comma, no space).
+(b)	Use option 3 (levelOrder) to print the tree. Data values at different levels should be printed at a different line.
+(c)	Use option 2 to remove 28, then use option 3 to print the tree.
+(d)	Use option 2 again to remove 25, then use option 3 to print the tree.
+(e)	Use option 4 to exit.
+You should let the instructor test your program using the same format (single input separate by comma without space).
+Some remarks:
+(a)	Option 1 is for input, 2 for remove, 3 for levelOrder (to print the tree), and 4 for exit,
+(b)	For insert, you should allow the user input one or more nodes at a time (separated by comma without space), instead of just one node at a time.
+(c)	For remove, you may just take one value to remove at a time. Remember: When deleting a node with two children, you should follow textbook strategy (replace the node by the smallest value from the right subtree, rather than the largest value from the left subtree).
+(d)	In order to verify the correctness of the resulting tree, levelOrder should print values at different levels using separate rows, instead of all values in one single line. E.g., print the tree as
+           2
+1	3
+Instead of 2 1 3.
