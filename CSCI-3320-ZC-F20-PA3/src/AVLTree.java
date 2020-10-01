@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
 public class AVLTree {
+
+    public static AVLTree tree = new AVLTree();
+    static Node root;
+
     class Node {
         int key, height;
         Node left, right;
@@ -9,13 +13,13 @@ public class AVLTree {
             height = 0;
         }
     }
-    static Node root;
+
     // A utility function to get height of the tree
     int height(Node N) {
         if (N == null) {
             return -1;
-        }
-        return N.height;
+        } else
+            return 1 + Math.max(height(N.left), height(N.right));
     }
     // A utility function to get maximum of two integers
     int max(int a, int b) {
@@ -98,6 +102,10 @@ public class AVLTree {
    /* Given a non-empty binary search tree, return the node with minimum
    key value found in that tree. Note that the entire tree does not
    need to be searched. */
+
+    private void insert(int parseInt) {
+        root = insert(root, parseInt);
+    }
     Node minValueNode(Node node) {
         Node current = node;
         /* loop down to find the leftmost leaf */
@@ -189,63 +197,123 @@ public class AVLTree {
             inOrder(node.right);
         }
     }
-    void printLevelOrder()
-    {
+    void printLevelOrder() {
         int h = height(root);
-        //System.out.println(h);
-        int i;
-        for (i=0; i<=h; i++)
+        for (int i=0; i<=h+1; i++){
             printGivenLevel(root, i);
-        System.out.println();
+            System.out.println();
+        }
     }
    /* Compute the "height" of a tree -- the number of
 nodes along the longest path from the root node
 down to the farthest leaf node.*/
     /* Print nodes at the given level */
-    void printGivenLevel (Node root ,int level)
-    {
-        if (root == null)
-            return;
-        if (level == 0)
-            System.out.print(root.key + " ");
-        else if (level > 1)
-        {
-            printGivenLevel(root.left, level-1);
-            printGivenLevel(root.right, level-1);
+    void printGivenLevel (Node root ,int level) {
+        if (root != null) {
+            if (level == 0)
+                System.out.print(root.key + " ");
+            else if (level > 0)
+            {
+                printGivenLevel(root.left, level-1);
+                printGivenLevel(root.right, level-1);
+            }
         }
     }
     public static void main(String[] args) {
-        AVLTree tree = new AVLTree();
-        Scanner sc = new Scanner(System.in);
-        int num;
+        System.out.println();
         while(true){
-            System.out.println();
-            System.out.println("1. Insert a element into the tree.");
-            System.out.println("2. Remove item from tree");
-            System.out.println("3. LevelOrder");
-            System.out.println("4. Exit - Exit Program");
-            int op = sc.nextInt();
-            switch(op){
+            showMenu();
+            Scanner scn = new Scanner(System.in);
+            String input = scn.next();
+            int userOp = 0;
+            int inputNum;
+            while (true) {
+                try {
+                    userOp = Integer.parseInt(input);              // Sanitize user input
+                    if (userOp < 1 || userOp > 4) {
+                        throw new NumberFormatException();          // Throw Exception for incorrect user input
+                    } else {                                        // Successful user input.
+                        break;                                      // Breaks out of innermost while loop
+                    }
+                } catch (NumberFormatException ex) {                // Catch Exception if user input is incorrect
+                    System.out.println("\n!!! YOU'VE ENTERED AN INCORRECT VALUE !!!\n" +
+                            "Please select a valid option from the menu and try again.\n");
+                    showMenu();
+                    input = scn.next();
+                }
+            }
+            switch(userOp){
                 case 1:
-                    System.out.print("Enter element to insert: ");
-                    num = sc.nextInt();
-                    root = tree.insert(root, num);
+                    makeTreeNodes();
                     break;
                 case 2:
-                    System.out.print("Enter element to delete: ");
-                    num = sc.nextInt();
-                    root = tree.deleteNode(root, num);
+                    System.out.print(">> Enter element to delete: ");
+                    inputNum = scn.nextInt();
+                    root = tree.deleteNode(root, inputNum);
                     break;
                 case 3:
                     tree.printLevelOrder();
-                case 4:
                     break;
+                case 4:
+                    scn.close();
+                    System.exit(0);
                 default:
-                    System.out.println("invalid option!!");
+                    System.out.println("!!! Unsupported Operation Detected. System Quit.");
+                    System.exit(1);
             }
-            if(op == 4)
-                break;
         }
-        System.out.println("\n");
     }
+
+    public static void makeTreeNodes() {
+        tree = new AVLTree();                                   // Inits null tree
+        String[] inputValues = new String[0];
+        Scanner scn = new Scanner(System.in);
+        boolean prompt;
+
+         /*
+         Assignment explicitly requires user data input for nodes to be separated by only a comma without space
+          */
+        do {
+            System.out.print("\n>> Enter your element(s) without spaces:  ");
+            String values = scn.nextLine();
+            if (values.contains(", ")) { // I added this check for personal preference of accidental spaces
+                System.out.println("\nYou've added a space after a comma somewhere.\n" +
+                        "Please separate your values using only commas.");
+                prompt = true;
+            } else {
+                if (values.contains(" ")) {                    // Checks for whitespace the user may have entered
+                    System.out.println("\nYou've added a space between values.\n" +
+                            "Please try again using commas only.");
+                    prompt = true;
+                }
+                else {
+                    if (values.contains(",")) {
+                        inputValues = values.split(",");   // Splits each number in user list at the commas
+                    } else {
+                        inputValues = values.split("\\s"); // Needed to catch if only one number was added
+                    }                                            // since one number wouldn't have any commas
+                    prompt = false;
+                }
+            }
+        } while (prompt);                                          // loops until input is validated
+
+        for (String x : inputValues) {                             // iterate through all user values
+            try {
+                tree.insert(Integer.parseInt(x));                  // Fills the Tree
+            } catch (NumberFormatException ex) {
+                System.out.println("**Skipping invalid input '" + x + "'**");  // If non-int item made it through the
+            }                                                              // simple checks then that item is skipped
+        }
+    }
+
+
+    private static void showMenu() {
+        System.out.println(">> Enter choice [1-4] from the menu below:\n");
+        System.out.println("   1) Insert element(s) into the tree.");
+        System.out.println("   2) Remove element from tree");
+        System.out.println("   3) Print LevelOrder");
+        System.out.println("   4) Exit - Exit Program");
+        System.out.print("\n   Your input:  ");
+    }
+
 }

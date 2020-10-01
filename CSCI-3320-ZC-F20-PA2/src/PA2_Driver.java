@@ -70,7 +70,7 @@ public class PA2_Driver {
                     System.exit(0);                                   // Shutdown JVM
                 }
                 default -> {
-                    System.out.println("unsupported operation");            // Necessary for switch statement syntax
+                    System.out.println("Unsupported Operation Detected. System Quit."); // Necessary for switch statement syntax
                     System.exit(1);
                 }
             }
