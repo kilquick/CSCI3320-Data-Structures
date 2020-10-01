@@ -141,7 +141,7 @@ public class PA2_Driver {
         System.out.println("   6) Print the level order traversal of the tree");
         System.out.println("   7) Delete a node");
         System.out.println("   8) Exit program");
-        System.out.print("\n   You're input:  ");
+        System.out.print("\n   Your input:  ");
     }
 }
 
