@@ -1,10 +1,30 @@
+/*
+  Author >>        Tyler Zoucha >> tzoucha@unomaha.edu
+  Program Title >> AVL Tree
+  Class >>         CSCI3320-820, Fall 2020
+  Assignment >>    CSCI-3320-ZC-F20-PA3
+
+  Objective >>  This program constructs an AVL tree and inserts/removes nodes into/from it.
+                Most of the code implemented in this program was actually a reimplementation of my BST code from PA2
+                altered for the characteristics of an AVL tree.
+ */
+
 import java.util.Scanner;
 
+
+/**
+ * Init class
+ * @author Tyler Zoucha >> tzoucha@unomaha.edu
+ */
 public class AVLTree {
 
+    /**
+     *  Init global AVL tree during runtime with root Node object
+     */
     public static AVLTree tree = new AVLTree();
     static Node root;
 
+    // Node constructor
     class Node {
         int key, height;
         Node left, right;
@@ -14,21 +34,35 @@ public class AVLTree {
         }
     }
 
-    // A utility function to get height of the tree
-    int height(Node N) {
+    /**
+     * Function to get height of subtree with root node N
+     * @param N Node        Current node to find height of
+     * @return int          Tree height
+     */
+    private int height(Node N) {
         if (N == null) {
             return -1;
         } else
             return 1 + Math.max(height(N.left), height(N.right));
     }
-    // A utility function to get maximum of two integers
-    int max(int a, int b) {
+
+    /**
+     * Function to get maximum of two integers
+     * @param a int     Int to compare
+     * @param b int     Int to compare
+     * @return int      Max of compared Ints
+     */
+    private int max(int a, int b) {
         return Math.max(a, b);
     }
-    // A utility function to right rotate subtree rooted with y
-    // See the diagram given above.
-    Node rightRotate(Node y) {
-        System.out.println("Right rotation at node : " + y.key);
+
+    /**
+     * Function to right rotate subtree rooted with y
+     * @param y Node    Root node
+     * @return Node     New root node after rotate
+     */
+    private Node rightRotate(Node y) {
+        System.out.println("** Right rotation at node : " + y.key);
         Node x = y.left;
         Node T2 = x.right;
         // Perform rotation
@@ -40,10 +74,15 @@ public class AVLTree {
         // Return new root
         return x;
     }
-    // A utility function to left rotate subtree rooted with x
-    // See the diagram given above.
-    Node leftRotate(Node x) {
-        System.out.println("Left rotation at node: " + x.key);
+
+
+    /**
+     * Function to left rotate subtree rooted with x
+     * @param x Node    Root node
+     * @return          New root node after rotate
+     */
+    private Node leftRotate(Node x) {
+        System.out.println("** Left rotation at node: " + x.key);
         Node y = x.right;
         Node T2 = y.left;
         // Perform rotation
@@ -55,15 +94,27 @@ public class AVLTree {
         // Return new root
         return y;
     }
-    // Get Balance factor of node N
-    int getBalance(Node N) {
+
+    /**
+     * Function to get Balance Factor of node N
+     * @param N Node    Root node of subtree
+     * @return int      Balance factor of subtree
+     */
+    private int getBalance(Node N) {
         if (N == null) {
             return 0;
         }
         return height(N.left) - height(N.right);
     }
-    Node insert(Node node, int key) {
-        /* 1. Perform the normal BST rotation */
+
+    /**
+     * Insert new node into the tree.
+     * @param node Node         New node
+     * @param key int           New value
+     * @return
+     */
+    private Node insert(Node node, int key) {
+        /* 1. Perform the normal BST insertion */
         if (node == null) {
             return (new Node(key));
         }
@@ -74,39 +125,41 @@ public class AVLTree {
         }
         /* 2. Update height of this ancestor node */
         node.height = max(height(node.left), height(node.right)) + 1;
-       /* 3. Get the balance factor of this ancestor node to check whether
-   this node became unbalanced */
-        int balance = getBalance(node);
-        // If this node becomes unbalanced, then there are 4 cases
-        // Left Left Case
-        if (balance > 1 && key < node.left.key) {
+
+        /*3. Get the balance factor of this ancestor node to check whether this node became unbalanced */
+        int balance = getBalance(node);                 /* If unbalanced, then there are 4 cases */
+        if (balance > 1 && key < node.left.key) {       // Left Left Case
             return rightRotate(node);
         }
-        // Right Right Case
-        if (balance < -1 && key > node.right.key) {
+        if (balance < -1 && key > node.right.key) {     // Right Right Case
             return leftRotate(node);
         }
-        // Left Right Case
-        if (balance > 1 && key > node.left.key) {
+        if (balance > 1 && key > node.left.key) {       // Left Right Case
             node.left = leftRotate(node.left);
             return rightRotate(node);
         }
-        // Right Left Case
-        if (balance < -1 && key < node.right.key) {
+        if (balance < -1 && key < node.right.key) {     // Right Left Case
             node.right = rightRotate(node.right);
             return leftRotate(node);
         }
         /* return the (unchanged) node pointer */
         return node;
     }
-   /* Given a non-empty binary search tree, return the node with minimum
-   key value found in that tree. Note that the entire tree does not
-   need to be searched. */
 
-    private void insert(int parseInt) {
-        root = insert(root, parseInt);
+    /**
+     * Insert value into node
+     * @param key       Value to be inserted
+     */
+    private void insert(int key) {
+        root = insert(root, key);
     }
-    Node minValueNode(Node node) {
+
+    /**
+     * Find subtree node with minimum value
+     * @param node Node         Root of subtree
+     * @return                  Node with minimum value
+     */
+    private Node minValueNode(Node node) {
         Node current = node;
         /* loop down to find the leftmost leaf */
         while (current.left != null) {
@@ -114,7 +167,14 @@ public class AVLTree {
         }
         return current;
     }
-    Node deleteNode(Node root, int key) {
+
+    /**
+     * Function to delete AVL Tree node
+     * @param root Node         Root of subtree
+     * @param key               Key value to delete
+     * @return                  Node to delete
+     */
+    private Node deleteNode(Node root, int key) {
         // STEP 1: PERFORM STANDARD BST DELETE
         if (root == null) {
             return root;
@@ -188,37 +248,41 @@ public class AVLTree {
         }
         return root;
     }
-    // A utility function to print preorder traversal of the tree.
-    // The function also prints height of every node
-    void inOrder(Node node) {
-        if (node != null) {
-            inOrder(node.left);
-            System.out.print(node.key + " ");
-            inOrder(node.right);
-        }
-    }
-    void printLevelOrder() {
+
+    /**
+     * Called to print the level order traversal of the tree
+     * No input parameters  <n/a></n/a>
+     * No return values     <n/a></n/a>
+     */
+    private void levelOrder() {
         int h = height(root);
         for (int i=0; i<=h+1; i++){
-            printGivenLevel(root, i);
+            printLevel(root, i);
             System.out.println();
         }
     }
-   /* Compute the "height" of a tree -- the number of
-nodes along the longest path from the root node
-down to the farthest leaf node.*/
-    /* Print nodes at the given level */
-    void printGivenLevel (Node root ,int level) {
+
+    /**
+     * Prints even level of tree. Used in conjunction with levelOrder()
+     * @param root Node         The current node to get tree level of
+     * @param level int         Tree level to print
+     */
+    private void printLevel (Node root, int level) {
         if (root != null) {
             if (level == 0)
                 System.out.print(root.key + " ");
             else if (level > 0)
             {
-                printGivenLevel(root.left, level-1);
-                printGivenLevel(root.right, level-1);
+                printLevel(root.left, level-1);
+                printLevel(root.right, level-1);
             }
         }
     }
+
+    /**
+     * Main method to drive AVL Tree program
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println();
         while(true){
@@ -247,24 +311,28 @@ down to the farthest leaf node.*/
                     makeTreeNodes();
                     break;
                 case 2:
-                    System.out.print(">> Enter element to delete: ");
+                    System.out.print("\n>> Enter element to delete: ");
                     inputNum = scn.nextInt();
                     root = tree.deleteNode(root, inputNum);
                     break;
                 case 3:
-                    tree.printLevelOrder();
+                    tree.levelOrder();
                     break;
                 case 4:
                     scn.close();
                     System.exit(0);
                 default:
+                    scn.close();
                     System.out.println("!!! Unsupported Operation Detected. System Quit.");
                     System.exit(1);
             }
         }
     }
 
-    public static void makeTreeNodes() {
+    /**
+     * Constructs a new AVL tree validating user input adding each data value
+     */
+    private static void makeTreeNodes() {
         tree = new AVLTree();                                   // Inits null tree
         String[] inputValues = new String[0];
         Scanner scn = new Scanner(System.in);
@@ -306,14 +374,15 @@ down to the farthest leaf node.*/
         }
     }
 
-
+    /**
+     * Prints out user prompt to interact with the program
+     */
     private static void showMenu() {
         System.out.println(">> Enter choice [1-4] from the menu below:\n");
-        System.out.println("   1) Insert element(s) into the tree.");
-        System.out.println("   2) Remove element from tree");
-        System.out.println("   3) Print LevelOrder");
+        System.out.println("   1) Insert Element(s)");
+        System.out.println("   2) Remove Element");
+        System.out.println("   3) Print Level Order");
         System.out.println("   4) Exit - Exit Program");
         System.out.print("\n   Your input:  ");
     }
-
 }
