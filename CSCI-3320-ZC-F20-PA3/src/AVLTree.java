@@ -6,25 +6,25 @@ public class AVLTree {
         Node left, right;
         Node(int d) {
             key = d;
-            height = 1;
+            height = 0;
         }
     }
     static Node root;
     // A utility function to get height of the tree
     int height(Node N) {
         if (N == null) {
-            return 0;
+            return -1;
         }
         return N.height;
     }
     // A utility function to get maximum of two integers
     int max(int a, int b) {
-        return (a > b) ? a : b;
+        return Math.max(a, b);
     }
     // A utility function to right rotate subtree rooted with y
     // See the diagram given above.
     Node rightRotate(Node y) {
-        System.out.println("Right rotation at node : "+y.key);
+        System.out.println("Right rotation at node : " + y.key);
         Node x = y.left;
         Node T2 = x.right;
         // Perform rotation
@@ -39,7 +39,7 @@ public class AVLTree {
     // A utility function to left rotate subtree rooted with x
     // See the diagram given above.
     Node leftRotate(Node x) {
-        System.out.println("Left rotation at node: "+x.key);
+        System.out.println("Left rotation at node: " + x.key);
         Node y = x.right;
         Node T2 = y.left;
         // Perform rotation
@@ -194,7 +194,7 @@ public class AVLTree {
         int h = height(root);
         //System.out.println(h);
         int i;
-        for (i=1; i<=h; i++)
+        for (i=0; i<=h; i++)
             printGivenLevel(root, i);
         System.out.println();
     }
@@ -206,7 +206,7 @@ down to the farthest leaf node.*/
     {
         if (root == null)
             return;
-        if (level == 1)
+        if (level == 0)
             System.out.print(root.key + " ");
         else if (level > 1)
         {
