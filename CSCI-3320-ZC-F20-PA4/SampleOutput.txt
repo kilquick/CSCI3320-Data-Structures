@@ -40,7 +40,7 @@ Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key,
 Your input: 4
 Enter key to remove: 5
 
-Element not found. Nothing changed.
+*** Element not found. Nothing changed. ***
 
 The heap has the following elements: 1 12 3 27 4 22 9 68 75 46 98 82 43 35
 

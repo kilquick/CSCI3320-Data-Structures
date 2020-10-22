@@ -186,7 +186,7 @@ public class myHeap {
         }
         if (exists == false){
             System.out.println();
-            System.out.println("Element not found. Nothing changed.");
+            System.out.println("*** Element not found. Nothing changed. ***");
         }
     }
 
