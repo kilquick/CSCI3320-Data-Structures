@@ -1,16 +1,15 @@
 public class myHeap {
-
-    //Made binary
-    int d = 2;
+    int d = 2;                                  //Binary heap
     private static final int DEFAULT_CAPACITY = 20;
-    private int currentSize;      // Number of elements in heap
-    private int[] array; // The heap array
+    private int currentSize;                    // Number of elements in heap
+    private int[] array;                        // The heap array
 
     /**
      * Construct the binary heap.
      */
     public myHeap() {
         this(DEFAULT_CAPACITY);
+        makeEmpty();
     }
 
     /**
@@ -25,16 +24,26 @@ public class myHeap {
 
     /**
      * Construct the binary heap given an array of items.
+     * @param items the heap stored in arrays
+     * @param var   respective priority queue
      */
     public myHeap(int[] items, int var) {
         this.d = var;
-        currentSize = items.length;
-        array = new int[(currentSize + 2) * 21 / 20];
+        if (items == null){
+            currentSize = -1;
+        }
+        else{
+            currentSize = items.length;
+        }
+        array = new int[(currentSize + 2) * (DEFAULT_CAPACITY + 1) / (DEFAULT_CAPACITY)];
 
         int i = 1;
-        for (int item : items)
-            array[i++] = item;
-        //buildHeap();
+        if (items == null){
+            array[0] = -1;
+        } else {
+            for (int item : items)
+                array[i++] = item;
+        }
     }
 
     /**
@@ -47,6 +56,7 @@ public class myHeap {
         int exist = 0;
         for (int i = 1; i <= currentSize; i++) {
             if (array[i] == x) {
+                System.out.println();
                 System.out.printf("%d already exists in the heap\n", x);
                 exist = 1;
             }
@@ -65,17 +75,16 @@ public class myHeap {
 
     }
 
+    /**
+     * Prints the heap
+     */
     public void printOutput() {
-        System.out.printf("The heap has the following elements: ", d);
+        System.out.printf("\nThe heap has the following elements: ", d);
 
         for (int i = 1; i <= currentSize; ++i)
             System.out.printf("%d ", array[i]);
 
-        System.out.printf("\n");
-    }
-
-    public void setD(int newD) {
-        this.d = newD;
+        System.out.print("\n\n");
     }
 
     private void enlargeArray(int newSize) {
