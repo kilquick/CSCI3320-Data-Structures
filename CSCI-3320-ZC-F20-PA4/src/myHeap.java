@@ -166,26 +166,26 @@ public class myHeap {
     }
 
     /**
-     * Itereates through array to see if the key exists and flags removed if it exists
-     * Then percolates down the queue to delete the key in question
+     * Itereates through array to see if the key exists and flags removed if it exists or not
+     * Then percolates down the queue to delete the key in question. If not found, no deletion.
      * @param key   The key to be deleted
      */
     public void remove(int key) {
         boolean exists = false;
         for (int i = 1; i <= currentSize; i++) {
             if (i == 1) {
-                if (key == array[i])
+                if (key == array[i]){
                     deleteMin();
                     exists = true;
+                }
             } else if (array[i] == key) {
                 array[i] = array[currentSize--];
                 percolateDown(i);
                 exists = true;
             }
         }
-        if (!exists) {
-            System.out.println("That element does not exist, please try again.");
-        }
+        if (!exists)
+            System.out.println("Element not found.");
     }
 
     /**
