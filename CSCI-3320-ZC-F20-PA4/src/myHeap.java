@@ -1,8 +1,8 @@
 public class myHeap {
-    int d = 2;                                  //Binary heap
-    private static final int DEFAULT_CAPACITY = 20;
-    private int currentSize;                    // Number of elements in heap
-    private int[] array;                        // The heap array
+    int d = 2;                                          // Binary heap
+    private static final int DEFAULT_CAPACITY = 20;     // Takes up to 20 integers
+    private int currentSize;                            // Number of elements in heap
+    private int[] array;                                // The heap array
 
     /**
      * Construct the binary heap.
@@ -14,7 +14,6 @@ public class myHeap {
 
     /**
      * Construct the binary heap.
-     *
      * @param capacity the capacity of the binary heap.
      */
     public myHeap(int capacity) {
@@ -24,7 +23,7 @@ public class myHeap {
 
     /**
      * Construct the binary heap given an array of items.
-     * @param items the heap stored in arrays
+     * @param items the priority queue of items
      * @param var   respective priority queue
      */
     public myHeap(int[] items, int var) {
@@ -48,8 +47,6 @@ public class myHeap {
 
     /**
      * Insert into the priority queue, maintaining heap order.
-     * Duplicates are allowed.
-     *
      * @param x the item to insert.
      */
     public void insert(int x) {
@@ -87,6 +84,11 @@ public class myHeap {
         System.out.print("\n\n");
     }
 
+    /**
+     * Needed when the heap grows outside its previous boundary.
+     * Copies priority queue into a new priority queue
+     * @param newSize   The queue's new size
+     */
     private void enlargeArray(int newSize) {
         int[] old = array;
         array = new int[newSize];
@@ -100,14 +102,13 @@ public class myHeap {
      * @return the smallest item, or throw an UnderflowException if empty.
      */
     public int findMin() {
-        //if( isEmpty( ) )
-        //throw new UnderflowException( );
+        if(isEmpty())
+        System.exit(1);
         return array[1];
     }
 
     /**
      * Remove the smallest item from the priority queue.
-     *
      * @return the smallest item in priority queue
      */
     public int deleteMin() {
@@ -146,7 +147,6 @@ public class myHeap {
 
     /**
      * Internal method to percolate down in the heap.
-     *
      * @param hole the index at which the percolate begins.
      */
     private void percolateDown(int hole) {
@@ -165,6 +165,10 @@ public class myHeap {
         array[hole] = tmp;
     }
 
+    /**
+     * Percolates down the queue for the key in question to delete
+     * @param key   The key to be deleted
+     */
     public void remove(int key) {
         for (int i = 1; i <= currentSize; i++) {
             if (i == 1) {
@@ -177,6 +181,11 @@ public class myHeap {
         }
     }
 
+    /**
+     * Percolates down the queue for the key to replace
+     * @param o     The key to be replaced
+     * @param n     The replacement key
+     */
     public void changeValue(int o, int n) {
         for (int i = 1; i <= currentSize; i++) {
             if (array[i] == o) {
