@@ -11,9 +11,17 @@
 
 import java.util.Scanner;
 
+/**
+ * Init class
+ * @author Tyler Zoucha >>  tzoucha@unomaha.edu
+ */
 public class BinaryHeap{
-    private static myHeap heap = new myHeap(null, 2);
+    private static myHeap heap = new myHeap(null, 2);      // init heap to take in max 20 integers
 
+    /**
+     * Main method that drives the program
+     * @param args
+     */
     public static void main (String[] args){
         System.out.println();
         while(true){
@@ -54,7 +62,7 @@ public class BinaryHeap{
                         heap.printOutput();
                         break;
                     case 4:                                         // delete key, then print
-                        System.out.print("Enter key: ");
+                        System.out.print("Enter key to remove: ");
                         int key = input.nextInt();
                         heap.remove(key);
                         heap.printOutput();
@@ -72,6 +80,7 @@ public class BinaryHeap{
                         break;
                     case 7:                                         // quit
                         System.out.printf("Program Terminated");
+                        input.close();
                         System.exit(0);
                         break;
                     default:                                        // default case if error
@@ -82,21 +91,30 @@ public class BinaryHeap{
         }
     }
 
+    /**
+     * Prompts for user input of heap element and create a new arbitrary heap
+     */
     private static void newHeap() {
         Scanner input = new Scanner(System.in);
         System.out.println();
+
+        // Stores user input into String elements
         System.out.print("Enter heap elements: ");
         String elements = input.nextLine();
 
+        // Separates user numbers and create priority queue
         String arr[]= elements.split(", ");
         int intArr[] = new int[arr.length];
         for (int i = 0; i < intArr.length; ++i) {
             intArr[i] = Integer.parseInt(arr[i]);
         }
 
-        heap = new myHeap(intArr, 2);
+        heap = new myHeap(intArr, 2);                   // New heap
     }
 
+    /**
+     * This method is called before/after user input to tell user what to do
+     */
     private static void showMenu() {
         System.out.println("Press (1) to build heap, (2) for insert, (3) for deleteMin, "+
                 "(4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit: ");
