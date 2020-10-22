@@ -1,0 +1,55 @@
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 1
+
+Enter heap elements: 35, 98, 17, 27, 46, 82, 75, 68, 5, 3, 19, 22, 43, 9, 2
+
+The heap has the following elements: 2 3 9 5 19 22 17 68 27 46 98 82 43 35 75
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 3
+
+The heap has the following elements: 3 5 9 27 19 22 17 68 75 46 98 82 43 35
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 4
+Enter key to remove: 17
+
+The heap has the following elements: 3 5 9 27 19 22 35 68 75 46 98 82 43
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 5
+Which key would you like to change?: 5
+What would you like to change it with?: 12
+
+The heap has the following elements: 3 12 9 27 19 22 35 68 75 46 98 82 43
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 5
+Which key would you like to change?: 19
+What would you like to change it with?: 4
+
+The heap has the following elements: 3 12 9 27 4 22 35 68 75 46 98 82 43
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 2
+Enter element to insert: 1
+Element: 1
+The heap has the following elements: 1 12 3 27 4 22 9 68 75 46 98 82 43 35
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 4
+Enter key to remove: 5
+
+Element not found. Nothing changed.
+
+The heap has the following elements: 1 12 3 27 4 22 9 68 75 46 98 82 43 35
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 6
+
+The heap has the following elements: 1 12 3 27 4 22 9 68 75 46 98 82 43 35
+
+Press (1) to build heap, (2) for insert, (3) for deleteMin, (4) to remove a key, (5) to change a key value, (6) to print heap, (7) to quit:
+Your input: 7
+Program Terminated
+Process finished with exit code 0
