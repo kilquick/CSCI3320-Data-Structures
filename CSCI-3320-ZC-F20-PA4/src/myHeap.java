@@ -192,13 +192,13 @@ public class myHeap {
 
     /**
      * Percolates down the queue for the key to replace
-     * @param o     The key to be replaced
-     * @param n     The replacement key
+     * @param oldKey     The key to be replaced
+     * @param newKey     The replacement key
      */
-    public void changeValue(int o, int n) {
+    public void changeValue(int oldKey, int newKey) {
         for (int i = 1; i <= currentSize; i++) {
-            if (array[i] == o) {
-                array[i] = n;
+            if (array[i] == oldKey) {
+                array[i] = newKey;
                 percolateDown(i);
             }
         }
