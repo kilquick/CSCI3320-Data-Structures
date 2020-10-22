@@ -1,3 +1,14 @@
+/*
+  Author >>        Tyler Zoucha >> tzoucha@unomaha.edu
+  Program Title >> Binary Heap
+  Class >>         CSCI3320-820, Fall 2020
+  Assignment >>    CSCI-3320-ZC-F20-PA4
+
+  Objective >>  This program constructs a heap (priority queue) using arrays (rather than pointers)
+ */
+
+
+
 import java.util.Scanner;
 
 public class BinaryHeap{
@@ -12,7 +23,7 @@ public class BinaryHeap{
             int choice = 0;
             while (true) {
                 try {
-                    choice = Integer.parseInt(in);              // Sanitize user input
+                    choice = Integer.parseInt(in);                  // Sanitize user input
                     if (choice < 1 || choice > 7) {
                         throw new NumberFormatException();          // Throw Exception for incorrect user input
                     } else {                                        // Successful user input.
@@ -26,29 +37,29 @@ public class BinaryHeap{
                 }
             }
             switch(choice){
-                    case 1: //buildHeap
+                    case 1:                                         // buildHeap (using linear algorithm), then print
                         newHeap();
                         heap.buildHeap();
                         heap.printOutput();
                         break;
-                    case 2: //insert
+                    case 2:                                         // insert (using percolate up), then print
                         System.out.print("Enter element to insert: ");
                         int e = input.nextInt();
                         System.out.printf("Element: %d", e);
                         heap.insert(e);
                         heap.printOutput();
                         break;
-                    case 3: // deleteMin
+                    case 3:                                         // deleteMin, then print
                         heap.deleteMin();
                         heap.printOutput();
                         break;
-                    case 4: // delete key
+                    case 4:                                         // delete key, then print
                         System.out.print("Enter key: ");
                         int key = input.nextInt();
                         heap.remove(key);
                         heap.printOutput();
                         break;
-                    case 5: //changeValue
+                    case 5:                                         // changeValue, then print
                         System.out.print("Which key would you like to change?: ");
                         int oldKey = input.nextInt();
                         System.out.print("What would you like to change it with?: ");
@@ -56,14 +67,14 @@ public class BinaryHeap{
                         heap.changeValue(oldKey, newKey);
                         heap.printOutput();
                         break;
-                    case 6: //print
+                    case 6:                                         // print
                         heap.printOutput();
                         break;
-                    case 7: //quit
+                    case 7:                                         // quit
                         System.out.printf("Program Terminated");
                         System.exit(0);
                         break;
-                    default:
+                    default:                                        // default case if error
                         input.close();
                         System.out.println("!!! Unsupported Operation Detected. System Quit.");
                         System.exit(1);
