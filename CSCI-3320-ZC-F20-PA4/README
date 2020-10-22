@@ -12,4 +12,4 @@ As before, we will use only integer keys for all operations. Your program should
 
 How to compile and run:
 $ javac *.java
-$ java BinaryTree.java
+$ java BinaryHeap.java
