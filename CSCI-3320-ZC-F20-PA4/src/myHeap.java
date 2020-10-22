@@ -108,18 +108,15 @@ public class myHeap {
     /**
      * Remove the smallest item from the priority queue.
      *
-     * @return the smallest item, or throw an UnderflowException if empty.
+     * @return the smallest item in priority queue
      */
-
-
     public int deleteMin() {
-        //if( isEmpty( ) )
-        //  throw new UnderflowException( );
-
+        if (isEmpty()) {
+            System.exit(1);
+        }
         int minItem = findMin();
         array[0] = array[currentSize--];
         percolateDown(0);
-
         return minItem;
     }
 
@@ -134,7 +131,6 @@ public class myHeap {
 
     /**
      * Test if the priority queue is logically empty.
-     *
      * @return true if empty, false otherwise.
      */
     public boolean isEmpty() {
