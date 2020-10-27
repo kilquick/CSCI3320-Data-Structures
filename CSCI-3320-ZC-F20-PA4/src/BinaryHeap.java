@@ -101,6 +101,8 @@ public class BinaryHeap{
         // Stores user input into String elements
         System.out.print("Enter heap elements: ");
         String elements = input.nextLine();
+        elements = elements.replaceAll(",", ", ");  //Handles user input separated by only commas
+                                                                    //Replaces "," with ", " to properly split intArr[]
 
         // Separates user numbers and create priority queue
         String arr[]= elements.split(", ");
