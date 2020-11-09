@@ -1,0 +1,15 @@
+The main objective of this assignment is to familiar yourself with several important operations related to heaps (priority queues). Just like the previous two programming assignments, this assignment is about binary trees. However, unlike the previous two, binary heap is a complete binary tree but not a binary search tree, and is implemented using arrays (rather than pointers) due to its structure property.
+In this programming assignment, you will extend the basic binary heap with these two new operations that are given below:
+•	remove(x) – removes the key with value ‘x’ (not the key at index ‘x’) from the heap. In case the value is not found, a message “the value”, x, “is not found”) should be displayed (instead of printing the remaining contents in the array, as in the normal case).
+•	changeValue(x, xnew) – changes the value of key ‘x’ to ‘xnew’. Again, x refers to a value, not an index. And again, in case the x is not in the heap, a message should be displayed rather than printing the updated heap content (as in the normal case).
+
+For implementing these operations you have to use the percolateUp and percolateDown techniques, along with appropriate additional logic. If you use any other technique to implement the operations, you will not get full points. Write a program in Java that implements the binary heap with the remove and changeValue operations along with the basic operations of insert, deleteMin and buildHeap. You can reuse the code for the basic operations and the code for the binary heap data structure from the textbook’s code repository.
+
+As before, we will use only integer keys for all operations. Your program should accept a comma separated list of integers as input from console. After input is done, your program should show a menu interface. The basic heap operations required in the question, like insert, buildHeap and deleteMin should be a menu entry each. Plus you need to have menu entries for the two operations you are implementing in the question, and, exit.
+
+
+/----------------------------------------------------------
+
+How to compile and run:
+$ javac *.java
+$ java BinaryHeap.java
